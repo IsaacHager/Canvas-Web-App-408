@@ -1,0 +1,20 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1598520106830-8c45c2f359c1?q=80&w=1920&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.workspace { flex: 1; display: flex; align-items: stretch; }
+.main-content { flex: 1; padding: 2rem; overflow-y: auto; }
+
+.placeholder-card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
