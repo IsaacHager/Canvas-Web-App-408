@@ -54,8 +54,6 @@ export default function Navbar() {
             </div>
 
             <div className="actions-group">
-                <button className="icon-button" title="Settings">⚙️</button>
-
                 <div className="avatar-container" ref={menuRef}>
                     <button
                         onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -86,10 +84,9 @@ export default function Navbar() {
                                     <hr className="dropdown-divider" />
                                 </>
                             )}
-                            <div className="dropdown-item">Canvas Token Config</div>
-                            <div className="dropdown-item">Preferences</div>
+                            <div className="dropdown-item">Preferences (Currently Unavailable)</div>
                             <hr className="dropdown-divider" />
-                            <div className="dropdown-item danger">Disconnect</div>
+                            <div className="dropdown-item danger">Disconnect  (Currently Unavailable)</div>
                         </div>
                     )}
                 </div>

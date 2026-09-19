@@ -2,11 +2,12 @@ import './Sidebar.css';
 
 export default function Sidebar({ activeTab, setActiveTab }) {
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '📌' },
-    { id: 'drafting', label: 'Drafting Table', icon: '📝' },
-    { id: 'predictor', label: 'Grade Predictor', icon: '🧮' },
-    { id: 'heatmap', label: 'Workload Matrix', icon: '🗺️' },
-    { id: 'grades', label: 'Grades Hub', icon: '📊' },
+    { id: 'dashboard', label: 'Dashboard', icon: '' },
+    { id: 'drafting', label: 'Drafting Table', icon: '' },
+    // TODO: Unecessary Sections
+    // { id: 'predictor', label: 'Grade Predictor', icon: '' },
+    // { id: 'heatmap', label: 'Workload Matrix', icon: '' },
+    { id: 'grades', label: 'Grades Hub', icon: '' },
   ];
 
   return (

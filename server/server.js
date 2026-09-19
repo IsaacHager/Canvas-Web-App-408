@@ -1,20 +1,13 @@
 const express = require('express');
 require('dotenv').config();
-const mongoose = require('mongoose');
 
 const app = express();
 
 const CANVAS_URL = process.env.CANVAS_URL;
 const CANVAS_TOKEN = process.env.CANVAS_API_TOKEN;
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/canvas_app';
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
-
-mongoose.connect(MONGODB_URI,)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch((err) => console.error('MongoDB connection error:', err));
 
 
 app.get('/', (req, res) => {
@@ -80,14 +73,14 @@ async function fetchCanvasAllPages(endpoint) {
 // Dashboard API endpoint
 app.get('/api/dashboard', async (req, res) => {
     try {
-        // 1. Fetch favorited courses
+        // Fetch favorited courses
         const rawCourses = await fetchCanvasAllPages(`${CANVAS_URL}/api/v1/users/self/favorites/courses?include[]=term&include[]=enrollments&include[]=course_image`);
 
-        // Inline cleanup: keeping objects with an ID and name
+        // Cleanup verify id and name
         const courses = (Array.isArray(rawCourses) ? rawCourses : [])
             .filter((c) => c.id && c.name)
             .map((c) => {
-                // Determine role from enrollments array
+                // Find role from enrollments array
                 const enrollTypes = (c.enrollments || []).map((e) => e.type || e.role);
                 let role = 'Student';
                 if (enrollTypes.includes('TaEnrollment') || enrollTypes.includes('ta')) {
@@ -108,10 +101,10 @@ app.get('/api/dashboard', async (req, res) => {
 
         console.log(`[Dashboard] Loaded ${courses.length} courses from Canvas.`);
 
-        // 2. Fetch assignments for each active course (removed bucket parameter)
+        // Fetch assignments for each active course
         const assignmentPromises = courses.map(async (course) => {
             try {
-                const rawAssignments = await fetchCanvasAllPages(`/api/v1/courses/${course.id}/assignments?per_page=50`);
+                const rawAssignments = await fetchCanvasAllPages(`/api/v1/courses/${course.id}/assignments`);
 
                 if (!Array.isArray(rawAssignments)) return [];
 
@@ -154,7 +147,7 @@ app.get('/api/dashboard', async (req, res) => {
     }
 });
 
-// Fetch user profile info from Canvas
+// Profile API endpoint
 app.get('/api/user/profile', async (req, res) => {
     try {
         const profileRes = await fetch(`${CANVAS_URL}/api/v1/users/self/profile`, {

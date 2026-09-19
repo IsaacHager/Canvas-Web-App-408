@@ -4,8 +4,8 @@ import Sidebar from './components/Sidebar';
 
 import DashboardView from './components/views/DashboardView';
 import DraftingView from './components/views/DraftingView';
-import PredictorView from './components/views/PredictorView';
-import HeatmapView from './components/views/HeatmapView';
+// import PredictorView from './components/views/PredictorView';
+// import HeatmapView from './components/views/HeatmapView';
 import GradesView from './components/views/GradesView';
 
 import './App.css';
@@ -70,10 +70,11 @@ export default function App() {
         );
       case 'drafting':
         return <DraftingView courses={courses}/* assignments={assignments} *//>;
-      case 'predictor':
-        return <PredictorView courses={courses} />;
-      case 'heatmap':
-        return <HeatmapView assignments={assignments} />;
+      // TODO: Unecessary Sections
+      // case 'predictor':
+      //   return <PredictorView courses={courses} />;
+      // case 'heatmap':
+      //   return <HeatmapView assignments={assignments} />;
       case 'grades':
         return <GradesView courses={courses} />;
       default:
