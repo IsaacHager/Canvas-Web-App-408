@@ -45,7 +45,7 @@ List any software or tools needed before installation (e.g., Node.js, Python).
 ### Installation
 1. Clone the repo:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/IsaacHager/Canvas-Web-App-408.git
    ```
 2. Create .env file
    ```bash
