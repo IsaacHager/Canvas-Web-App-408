@@ -39,9 +39,6 @@ much of that information (especially comments and graded rubrics) can be fairly 
 
 ## Getting Started
 
-### Prerequisites
-List any software or tools needed before installation (e.g., Node.js, Python).
-
 ### Installation
 1. Clone the repo:
    ```bash
